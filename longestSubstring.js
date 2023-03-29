@@ -4,7 +4,7 @@ find the longest string of letters that doesn't not contain repeating letters*/
 /* sliding window is useful when we have a set of data, like an array or string,
 and we're looking for a subset of that data that is continuous*/
 //move the window from the left to the right
-
+/* calculate the sum of the current window by subtracting the first element of the previous window and adding the next element of the current window */
 function maxSubArraySum(arr, num) {
   let maxSum = 0;
   let tempSum = 0;
