@@ -12,12 +12,15 @@ function maxSubArraySum(arr, num) {
   for (let i = 0; i < num; i++) {
     maxSum += arr[i];
   }
-  tempSum = maxSum;
+  tempSum = maxSum; //6
+
   for (let i = num; i < arr.length; i++) {
+    console.log(`tempSum: ${tempSum}, - arr[i-num]: ${arr[i - num]}, + arr[i]: ${arr[i]}`);
     tempSum = tempSum - arr[i - num] + arr[i];
     maxSum = Math.max(maxSum, tempSum);
+    console.log(`maxSum: ${maxSum}`);
   }
   return maxSum;
 }
 
-console.log(maxSubArraySum([1,2,3,4,3,2,1], 3))
+console.log(maxSubArraySum([1, 2, 3, 4, 3, 2, 1], 3));
