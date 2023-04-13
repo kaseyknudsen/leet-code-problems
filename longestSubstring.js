@@ -45,16 +45,15 @@ and we're looking for a subset of that data that is continuous*/
 // console.log(maxSubArraySum([1, 2, 3, 4, 3, 2, 1], 3));
 
 //brute force method. Bad.
-const isUnique = (s) => {
-  const set = new Set();
-  for (let i = 0; i < s.length; i++) {
-    if (set.has(s[i])) {
-      return false;
-    }
-    set.add(s[i]);
-  }
-  return true;
-};
+// const isUnique = (s) => {
+//   const set = new Set();
+//   for (let i = 0; i < s.length; i++) {
+//     if (set.has(s[i])) {
+//       return false;
+//     }
+//     set.add(s[i]);
+//   }
+//   return true;
 
 // const longestSubString = (s) => {
 //   let max = 0;
@@ -74,23 +73,47 @@ const isUnique = (s) => {
 
 //optimal solutions
 //hash map
+// const longestSubString = (s) => {
+//   let max = 0;
+//   let begin = 0;
+//   let map = {};
+//   for (let end = 0; end < s.length; end++) {
+//     if (map[s[end]] !== undefined && map[s[end]] >= begin) {
+//       begin = map[s[end]] + 1;
+//     }
+//     map[s[end]] = end;
+//     max = Math.max(max, end - begin + 1);
+//   }
+//   return max;
+// };
+
+// console.log(longestSubString("abcacbacb"));
+
+// console.log(maxSubArraySum([1, 2, 3, 4, 3, 2, 1], 3));
+
+// console.log(lengthOfLongestSubstring('abcabcbb'))
+
 const longestSubString = (s) => {
   let max = 0;
-  let begin = 0;
-  let map = {};
-  for (let end = 0; end < s.length; end++) {
-    if (map[s[end]] !== undefined && map[s[end]] >= begin) {
-      begin = map[s[end]] + 1;
+  let windowStart = 0;
+  const soFar = {};
+
+  for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
+    let rightChar = s[windowEnd];
+    soFar[rightChar] = soFar[rightChar] + 1 || 1;
+
+    while (soFar[rightChar] > 1) {
+      let leftChar = s[windowStart];
+      if (soFar[leftChar] > 1) {
+        soFar[leftChar]--;
+      } else {
+        delete soFar[leftChar];
+      }
+      windowStart++;
     }
-    map[s[end]] = end;
-    max = Math.max(max, end - begin + 1);
+    max = Math.max(max, windowEnd - windowStart + 1);
   }
   return max;
 };
 
-
-console.log(longestSubString("abcacbacb"));
-
-console.log(maxSubArraySum([1, 2, 3, 4, 3, 2, 1], 3));
-
-console.log(lengthOfLongestSubstring('abcabcbb'))
+console.log(longestSubString("abcabcaa"));
