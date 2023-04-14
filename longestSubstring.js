@@ -100,19 +100,19 @@ const longestSubString = (s) => {
 
   for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
     let rightChar = s[windowEnd];
-    console.log(`rightChar: ${rightChar}`)
+    console.log(`rightChar: ${rightChar}`);
     soFar[rightChar] = soFar[rightChar] + 1 || 1;
-    console.log('so far: ')
-    console.log(soFar)
+    console.log("so far: ");
+    console.log(soFar);
 
     while (soFar[rightChar] > 1) {
-      console.log(`now we've entered the while loop!`)
+      console.log(`now we've entered the while loop!`);
       let leftChar = s[windowStart];
-      console.log(`left char: ${leftChar}`)
+      console.log(`left char: ${leftChar}`);
       if (soFar[leftChar] > 1) {
         soFar[leftChar]--;
-        console.log('so far in while loop: ')
-        console.log(soFar)
+        console.log("so far in while loop: ");
+        console.log(soFar);
       } else {
         delete soFar[leftChar];
       }
@@ -123,8 +123,10 @@ const longestSubString = (s) => {
   return max;
 };
 
-console.log(longestSubString("l k q r g e a k l f j h n m i q d f b m c f r b"));
-//                                                       [                                                                 
-//                                                                   ]                                                                               
-//q: 1, f: 1, m: 1, i: 1, d: 1, b: 1,     
-//max: 7
+console.log(
+  longestSubString("l k q r g e a k l f j h n m i q d f b m c f r b")
+);
+//                  [
+//                                 ]
+//freqCounter:  k: 2, q: 1, r: 1, g: 1, e: 1, a: 1,  
+//max: 
