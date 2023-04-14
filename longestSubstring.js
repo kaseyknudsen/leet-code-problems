@@ -100,12 +100,19 @@ const longestSubString = (s) => {
 
   for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
     let rightChar = s[windowEnd];
+    console.log(`rightChar: ${rightChar}`)
     soFar[rightChar] = soFar[rightChar] + 1 || 1;
+    console.log('so far: ')
+    console.log(soFar)
 
     while (soFar[rightChar] > 1) {
+      console.log(`now we've entered the while loop!`)
       let leftChar = s[windowStart];
+      console.log(`left char: ${leftChar}`)
       if (soFar[leftChar] > 1) {
         soFar[leftChar]--;
+        console.log('so far in while loop: ')
+        console.log(soFar)
       } else {
         delete soFar[leftChar];
       }
@@ -116,4 +123,4 @@ const longestSubString = (s) => {
   return max;
 };
 
-console.log(longestSubString("abcabcaa"));
+console.log(longestSubString("abcabedgb"));
