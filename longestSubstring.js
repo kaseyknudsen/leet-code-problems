@@ -123,4 +123,8 @@ const longestSubString = (s) => {
   return max;
 };
 
-console.log(longestSubString("abcabedgb"));
+console.log(longestSubString("l k q r g e a k l f j h n m i q d f b m c f r b"));
+//                                                       [                                                                 
+//                                                                   ]                                                                               
+//q: 1, f: 1, m: 1, i: 1, d: 1, b: 1,     
+//max: 7
