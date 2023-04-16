@@ -11,7 +11,7 @@ const longestSubString3 = (s) => {
       if (freqCounter[leftChar] > 1) {
         freqCounter[leftChar]--;
       } else {
-        delete freqCounter[leftChar];
+        freqCounter[leftChar]--
       }
       left++;
     }
@@ -22,3 +22,16 @@ const longestSubString3 = (s) => {
 
 console.log(longestSubString3("tmmzuxt"));
 
+/* 
+   [t m m z u x t ]
+//     [
+//               ]  
+// 
+*/
+//right: 6
+//rightChar: t
+//freqCounter: t:1, m:1, z:1, u:1, x:1
+//left: 2
+//leftChar: m
+//max is right - left + 1
+//max = 2
