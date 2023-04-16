@@ -16,9 +16,9 @@ const longestSubString3 = (s) => {
       left++;
     }
     max = Math.max(max, right - left + 1);
-    console.log(`max: ${max}`);
   }
   return max;
 };
 
 console.log(longestSubString3("tmmzuxt"));
+
