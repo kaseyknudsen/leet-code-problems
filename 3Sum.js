@@ -45,16 +45,28 @@ increment left and right
 const sum3 = (arr, num) => {
   let sum = 0;
   let zeroSumArray = [];
-  let right;
+  let rightBottomLoop = num;
   let left = 0;
-  for (right = 0; right < num; right++) {
+  for (let right = 0; right < num; right++) {
     sum += arr[right];
   }
   if (sum === 0) {
     zeroSumArray.push(arr.slice(0, num));
   }
 
+  while (rightBottomLoop < arr.length) {
+    for (let i = rightBottomLoop - 1; i < arr.length; i++) {
+      sum = sum - arr[left] + arr[i + 2];
+      if (sum === 0) {
+        zeroSumArray.push([arr[left], arr[i], arr[i + 1]]);
+      }
+    }
+    left++;
+    rightBottomLoop++;
+  }
   return zeroSumArray;
 };
 
-console.log(sum3([-1, 0, 1, 0, 0, 0], 3));
+console.log(sum3([-1, 0, 1, 2, -1, -4], 3));
+
+//try for [0,0,0,0]
