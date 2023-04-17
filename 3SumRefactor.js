@@ -1,13 +1,18 @@
 const sum3 = (arr) => {
   arr.sort((a, b) => a - b);
   const zeroSumArray = [];
+  const duplicateArrays = {}
   for (let i = 0; i < arr.length - 2; i++) {
     for (let j = i + 1; j < arr.length - 1; j++) {
       for (let k = j + 1; k < arr.length; k++) {
-        let threeNums = [arr[i], arr[j], arr[k]].join(" ");
-        let sum = arr[i] + arr[j] + arr[k];
-        if (sum === 0 && zeroSumArray.indexOf(threeNums) === -1) {
-          zeroSumArray.push(threeNums);
+        if (arr[i] + arr[j] + arr[k] === 0) {
+          const stringFromArray = [arr[i], arr[j] , arr[k]].join(',')
+          if (!duplicateArrays[stringFromArray]) {
+            duplicateArrays[stringFromArray] = true
+            console.log(duplicateArrays)
+            zeroSumArray.push([arr[i], arr[j], arr[k]])
+          }
+          
         }
       }
     }
@@ -15,7 +20,7 @@ const sum3 = (arr) => {
   return zeroSumArray;
 };
 
-console.log(sum3([0, 0, 0, 0]));
+console.log(sum3([-1, 0, 1, 2, -1, -4]));
 
 /* 
 let zeroSumArray = [];
