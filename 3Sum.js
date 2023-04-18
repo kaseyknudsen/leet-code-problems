@@ -47,6 +47,7 @@ const sum3 = (arr, num) => {
   let zeroSumArray = [];
   let rightBottomLoop = num;
   let left = 0;
+  let duplicateArrays = {};
   for (let right = 0; right < num; right++) {
     sum += arr[right];
   }
@@ -67,6 +68,6 @@ const sum3 = (arr, num) => {
   return zeroSumArray;
 };
 
-console.log(sum3([-1, 0, 1, 2, -1, -4], 3));
+console.log(sum3([0, 0, 0, 0, 0, 0, 0], 3));
 
 //try for [0,0,0,0]

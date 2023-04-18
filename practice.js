@@ -10,3 +10,6 @@ const sortedArray = array
   .sort((a, b) => a.value - b.value);
 
 console.log(sortedArray);
+
+
+
