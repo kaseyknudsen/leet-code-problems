@@ -26,27 +26,21 @@ const sum2 = (inputArray, target) => {
 console.log(sum2([1, 2, 4, 5, 7, 3], 6));
 
 /* 
-compliment number = 6 - 1 = 5
-{
-  1: 0
-}
-compliment number = 6 - 2 = 4
+
+CN = 6 - 1 = 5
+CN = 6 - 2 = 4
+CN = 6 - 4 = 2
+**push 1 & 2 to array
+CN = 6 - 5 - 1
+**push 0 & 3 to array
+CN = 6 - 7 = -1
+CN = 6 - 3 = 3
+
 {
   1: 0
   2: 1
-}
-compliment number = 6 - 4 = 2
-{
-  1: 0
-  2: 1 -- we have a match!
-}
-push 1, 2 to the array
-
-compliment number = 6 - 5 = 1
-there is a 1 in the hashMap, so we push 0 & 3 to the array
-{
-  1: 0
-  2: 1 -- we have a match!
+  7: 4
+  3: 5
 
 }
 */
