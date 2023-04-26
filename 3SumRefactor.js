@@ -1,21 +1,17 @@
 const sum3 = (arr) => {
   const newArray = arr.sort((a, b) => a - b);
   const zeroSumArray = [];
-  let k = newArray.length - 1;
   for (let i = 0; i < newArray.length - 2; i++) {
-    if (newArray[i] === newArray[i] - 1) {
+    if (i > 0 && newArray[i] === newArray[i - 1]) {
       continue;
     }
     let target = newArray[i] * -1;
-    console.log(`i: ${newArray[i]}`);
     for (let j = i + 1; j < arr.length - 1; j++) {
-      console.log(`j: ${newArray[j]}`);
-      if (newArray[j] === newArray[j] - 1) {
+      if (j > i + 1 && newArray[j] === newArray[j - 1]) {
         continue;
       }
-      for (k = newArray.length - 1; k > j; k--) {
-        console.log(`k: ${newArray[k]}`);
-        if (newArray[k] === newArray[k] + 1) {
+      for (let k = newArray.length - 1; k > j; k--) {
+        if (k < newArray.length - 1 && newArray[k] === newArray[k + 1]) {
           continue;
         }
         if (newArray[j] + newArray[k] < target) {
@@ -23,7 +19,7 @@ const sum3 = (arr) => {
         } else if (newArray[j] + newArray[k] > target) {
           k--;
         } else {
-          zeroSumArray.push([newArray[i] * -1, newArray[j], newArray[k]]);
+          zeroSumArray.push([(target * -1), newArray[j], newArray[k]]);
         }
       }
     }
