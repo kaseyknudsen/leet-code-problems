@@ -1,12 +1,38 @@
-const sum3 = (arr, num) => {
-  arr.sort((a, b) => a - b);
+const sum3 = (arr) => {
+  const newArray = arr.sort((a, b) => a - b);
   const zeroSumArray = [];
-  console.log(arr);
+  let k = newArray.length - 1;
+  for (let i = 0; i < newArray.length - 2; i++) {
+    if (newArray[i] === newArray[i] - 1) {
+      continue;
+    }
+    let target = newArray[i] * -1;
+    console.log(`i: ${newArray[i]}`);
+    for (let j = i + 1; j < arr.length - 1; j++) {
+      console.log(`j: ${newArray[j]}`);
+      if (newArray[j] === newArray[j] - 1) {
+        continue;
+      }
+      for (k = newArray.length - 1; k > j; k--) {
+        console.log(`k: ${newArray[k]}`);
+        if (newArray[k] === newArray[k] + 1) {
+          continue;
+        }
+        if (newArray[j] + newArray[k] < target) {
+          j++;
+        } else if (newArray[j] + newArray[k] > target) {
+          k--;
+        } else {
+          zeroSumArray.push([newArray[i] * -1, newArray[j], newArray[k]]);
+        }
+      }
+    }
+  }
 
   return zeroSumArray;
 };
 
-console.log(sum3([-1, 0, 1, 2, -1, -4]));
+console.log(sum3([-1, 0, 1, 2, -1, -4, -3, -2, 3]));
 
 /* 
   num = 0
@@ -63,17 +89,16 @@ is i === to i - 1? no...
 is j(1) + k(3) === to 0? No, and it's more, so we decrement k
 is k === to k + 1? No...
 is j (1) + k (2) = 0? No, and it's more, but k is out of range so now we are done
-how do we return the indices of the orignal array tho?
-[[4, 1, 3], [-3, 0, 3], [-2, -1, 3], [-1, 0, 1]] (but we need to indices of these)
-  */
 
+[[4, 1, 3], [-3, 0, 3], [-2, -1, 3], [-1, 0, 1]] 
+  */
 
 /* 
   -find all possible combinations of 3 numbers that add up to the target
   -triplets cannot repeat
   -you can't use the same index twice in one triplet
-  1) sort the array (cost is nLogN)
-  2) create an array to update with the triplets
+  1) sort the newArrayay (cost is nLogN)
+  2) create an newArrayay to update with the triplets
   (we need 3 pointer: one at the beginning, one at the end, and one that moves in between
     j & k will act like 2 sum, with the target being the value at i with a flipped operator becase
     if you flip the operator from negative to positive, and the other 2 nums add up to the positie number
@@ -82,5 +107,4 @@ how do we return the indices of the orignal array tho?
     4) create 2 in
   */
 
-
-    //-4 +  
+//-4 +
