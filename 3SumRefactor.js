@@ -1,30 +1,34 @@
 const sum3 = (arr) => {
   const newArray = arr.sort((a, b) => a - b);
+  //[-3, -1, -1, 0, 0,  1,  1, 2]
   const zeroSumArray = [];
   for (let i = 0; i < newArray.length - 2; i++) {
     let target = newArray[i] * -1;
+
     if (i > 0 && newArray[i] === newArray[i - 1]) {
       continue;
     }
+    console.log(`i: ${newArray[i]}`);
     for (let j = i + 1; j < newArray.length - 1; j++) {
-      let leftValue = newArray[j];
-      if (j > i + 1 && leftValue === newArray[j - 1]) {
+      console.log(`j: ${newArray[j]}`);
+      if (j > i + 1 && newArray[j] === newArray[j - 1]) {
         continue;
       }
       let k = newArray.length - 1;
-      let rightValue = newArray[k];
+      console.log(`k: ${newArray[k]}`);
       while (k > j) {
-        // if (k < newArray.length - 1 && rightValue === newArray[k + 1]) {
-        //   break;
-        // }
-        console.log(`k: ${newArray[k]}`)
+        if (k < newArray.length - 1 && newArray[k] === newArray[k + 1]) {
+          k--;
+        }
         if (newArray[j] + newArray[k] < target) {
           j++;
-        } else if (leftValue + newArray[k] > target) {
+        } else if (newArray[j] + newArray[k] > target) {
           k--;
         } else {
           zeroSumArray.push([target * -1, newArray[j], newArray[k]]);
-          break;
+          console.log(`zeroSumArray: ${zeroSumArray}`);
+          j++;
+          k--;
         }
       }
     }
@@ -109,3 +113,19 @@ is j (1) + k (2) = 0? No, and it's more, but k is out of range so now we are don
   */
 
 //-4 +
+
+/* 
+[-3, -1, 1, 0, 3, 3]
+     [i]
+        [j]
+                 [k]
+
+target = -3 * -1 = 3
+does j(-1) + k(3) = 3? No, and it's less than target, so increment j
+does j = j - 1? No.
+Does j(1) + k(3) = 3? No, and it's more than target, so decrement k
+does k = k + 1? Yes, so decrement to next  value
+does k = k + 1? No
+Does j(1) + k(0) = 3? No, and j is now out of range, so we increment i
+
+*/
