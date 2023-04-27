@@ -19,8 +19,18 @@ const sum2 = (inputArray, target) => {
       hashMap[inputArray[i]] = i;
     }
   }
-  console.log(hashMap);
   return pairsArray;
 };
 
-console.log(sum2([1, 2, 4, 5, 7, 3], 6));
+console.log(sum2([1, -1, 0, 0, 3, -2], 0));
+
+/* 
+cn = -1
+hashmap{1: 0}
+
+cn = 1
+
+
+*/
+
+
