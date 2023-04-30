@@ -27,14 +27,14 @@ const sum3 = (arr) => {
         console.log(mapK);
         if (mapK[arr[k]] > 1) {
           k--;
-        } else if (arr[j] + arr[k] < target) {
+        }
+        if (newArray[j] + newArray[k] < target) {
           j++;
         } else if (arr[j] + arr[k] > target) {
           k--;
         } else {
           zeroSumArray.push([target * -1, arr[j], arr[k]]);
           j++;
-          k--;
         }
       }
     }
