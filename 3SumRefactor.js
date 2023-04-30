@@ -4,7 +4,6 @@ const sum3 = (arr) => {
   const zeroSumArray = [];
   for (let i = 0; i < newArray.length - 2; i++) {
     let target = newArray[i] * -1;
-
     if (i > 0 && newArray[i] === newArray[i - 1]) {
       continue;
     }
@@ -20,7 +19,9 @@ const sum3 = (arr) => {
         if (k < newArray.length - 1 && newArray[k] === newArray[k + 1]) {
           k--;
         }
-        if (newArray[j] + newArray[k] < target) {
+        if (j > i + 1 && newArray[j] === newArray[j - 1]) {
+          j++;
+        } else if (newArray[j] + newArray[k] < target) {
           j++;
         } else if (newArray[j] + newArray[k] > target) {
           k--;
@@ -28,7 +29,6 @@ const sum3 = (arr) => {
           zeroSumArray.push([target * -1, newArray[j], newArray[k]]);
           console.log(`zeroSumArray: ${zeroSumArray}`);
           j++;
-          k--;
         }
       }
     }
@@ -37,7 +37,7 @@ const sum3 = (arr) => {
   return zeroSumArray;
 };
 
-console.log(sum3([-1, 0, 1, 2, -3, -1, 0, 1]));
+console.log(sum3([-1, 0, 1, -1, 1, 0]));
 
 /* 
   num = 0
